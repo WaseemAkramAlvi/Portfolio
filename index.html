@@ -6,522 +6,7 @@
     <title>Waseem Akram - Instructor & IT Specialist</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        /* --- RESET & BASIC STYLES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #1a1a1a;
-            overflow-x: hidden;
-        }
-
-        /* --- NAVBAR --- */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #1a1a1a !important;
-        }
-
-        .nav-link {
-            color: #1a1a1a !important;
-            margin: 0 10px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(45deg, #8a2be2, #da70d6);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after {
-            width: 80%;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #e8f0ff 0%, #d4e7ff 100%);
-            padding-top: 80px;
-            /* Important: Padding bottom to accommodate the ticker overlapping the image */
-            padding-bottom: 0; 
-        }
-
-        /* Animated Code Symbols */
-        .code-symbol {
-            position: absolute;
-            font-family: 'Courier New', monospace;
-            font-weight: 900;
-            color: rgba(138, 43, 226, 0.1);
-            z-index: 0;
-            pointer-events: none;
-            animation: floatSymbol 8s ease-in-out infinite;
-            user-select: none;
-        }
-
-        .sym-1 { top: 10%; left: 5%; font-size: 5rem; animation-delay: 0s; }
-        .sym-2 { bottom: 20%; left: -2%; font-size: 8rem; animation-delay: 2s; }
-        .sym-3 { top: 15%; right: 10%; font-size: 4rem; animation-delay: 1s; }
-        .sym-4 { bottom: 10%; right: 5%; font-size: 6rem; animation-delay: 3s; }
-        .sym-5 { top: 45%; left: 45%; font-size: 3rem; animation-delay: 1.5s; opacity: 0.1; }
-
-        @keyframes floatSymbol {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-25px) rotate(5deg); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding-bottom: 50px; /* Push content up slightly on mobile */
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-            color: #1a1a1a;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 30px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.6s forwards;
-            line-height: 1.6;
-        }
-
-        /* Buttons */
-        .btn-custom {
-            background: linear-gradient(45deg, #8a2be2, #da70d6);
-            border: none;
-            padding: 12px 40px;
-            border-radius: 50px;
-            color: #fff;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-custom:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
-            color: #fff;
-        }
-
-        .btn-outline-custom {
-            background: transparent;
-            border: 2px solid #8a2be2;
-            padding: 12px 40px;
-            border-radius: 50px;
-            color: #8a2be2;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn-outline-custom:hover {
-            background: #8a2be2;
-            color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
-        }
-
-        /* Stats */
-        .stats-row {
-            display: flex;
-            gap: 60px;
-            margin-top: 40px;
-        }
-
-        .stat-item h3 {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #1a1a1a;
-            margin-bottom: 5px;
-        }
-
-        .stat-item p {
-            font-size: 0.9rem;
-            color: #666;
-            margin: 0;
-        }
-
-        /* --- HERO IMAGE STYLE (Ring & Brackets) --- */
-        .hero-image-container {
-            position: relative;
-            height: 650px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            /* Ensure bottom padding is small so image sits near the bar */
-            padding-bottom: 0px; 
-        }
-
-        .hero-circle-bg {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(138, 43, 226, 0.2) 0%, rgba(218, 112, 214, 0.1) 50%, transparent 70%);
-            border: 3px solid rgba(138, 43, 226, 0.4);
-            z-index: 0;
-            bottom: 80px; /* Raised slightly so ticker covers feet/cut */
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 80px rgba(138, 43, 226, 0.3), inset 0 0 60px rgba(138, 43, 226, 0.1);
-            animation: pulseGlow 4s infinite alternate;
-        }
-
-        @keyframes pulseGlow {
-            0% { transform: translateX(-50%) scale(1); box-shadow: 0 0 80px rgba(138, 43, 226, 0.3); }
-            100% { transform: translateX(-50%) scale(1.05); box-shadow: 0 0 100px rgba(138, 43, 226, 0.5); }
-        }
-
-        .hero-person-img {
-            position: relative;
-            z-index: 2;
-            height: auto;
-            max-height: 600px; /* Taller image */
-            max-width: 90%;
-            width: auto;
-            filter: drop-shadow(0 15px 40px rgba(0,0,0,0.2));
-            /* Push image down so feet are behind the ticker */
-            margin-bottom: -10px; 
-        }
-
-        .hero-bracket {
-            position: absolute;
-            font-size: 8rem;
-            font-weight: 100;
-            color: transparent;
-            -webkit-text-stroke: 2px rgba(138, 43, 226, 0.5);
-            z-index: 1;
-            top: 50%;
-            transform: translateY(-50%);
-            font-family: 'Segoe UI', sans-serif;
-            opacity: 0.7;
-        }
-
-        .bracket-left { left: 0; animation: floatLeft 3s ease-in-out infinite; }
-        .bracket-right { right: 0; animation: floatRight 3s ease-in-out infinite; }
-
-        @keyframes floatLeft {
-            0%, 100% { transform: translateY(-50%) translateX(0); }
-            50% { transform: translateY(-50%) translateX(-15px); }
-        }
-
-        @keyframes floatRight {
-            0%, 100% { transform: translateY(-50%) translateX(0); }
-            50% { transform: translateY(-50%) translateX(15px); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- SKILLS SLIDER (TICKER) - Overlapping Image --- */
-        .tech-ticker-section {
-            position: absolute;
-            bottom: 40px; /* Positioned to cover the bottom cut of image */
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.85); /* Glass effect */
-            backdrop-filter: blur(15px); /* Strong blur to hide cut */
-            padding: 25px 0;
-            border-top: 1px solid rgba(138, 43, 226, 0.1);
-            border-bottom: 1px solid rgba(138, 43, 226, 0.1);
-            z-index: 10; /* Above the image */
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
-        }
-
-        .tech-track {
-            display: flex;
-            width: fit-content;
-            animation: scroll 40s linear infinite;
-        }
-
-        .tech-item {
-            padding: 0 50px;
-            text-align: center;
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: #ccc; /* Light gray initially like reference */
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            white-space: nowrap;
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-
-        .tech-item:hover {
-            color: #8a2be2;
-            transform: scale(1.1);
-        }
-
-        /* Gradient mask for smooth fade on edges */
-        .tech-ticker-section::before,
-        .tech-ticker-section::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            width: 150px;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .tech-ticker-section::before {
-            left: 0;
-            background: linear-gradient(to right, #e8f0ff, transparent); /* Match hero bg */
-        }
-
-        .tech-ticker-section::after {
-            right: 0;
-            background: linear-gradient(to left, #d4e7ff, transparent); /* Match hero bg */
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* --- SECTIONS (ABOUT, SKILLS, ETC) --- */
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(45deg, #8a2be2, #da70d6);
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        /* Experience Timeline */
-        .experience-list {
-            padding-left: 20px;
-            border-left: 2px solid rgba(138, 43, 226, 0.3);
-            margin-top: 20px;
-        }
-
-        .experience-item {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 40px;
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: -9px;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            background: #8a2be2;
-            border-radius: 50%;
-            border: 3px solid #f8f9fa;
-            transition: all 0.3s ease;
-        }
-
-        .experience-item:hover::before {
-            transform: scale(1.3);
-            background: #fff;
-            border-color: #8a2be2;
-        }
-
-        .date-range {
-            background: rgba(138, 43, 226, 0.1);
-            color: #8a2be2;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 10px;
-            border: 1px solid rgba(138, 43, 226, 0.2);
-        }
-
-        /* Skills, Projects & Certifications Cards */
-        .skill-card, .project-card, .cert-card {
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(138, 43, 226, 0.1);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-
-        .skill-card:hover, .project-card:hover, .cert-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.2);
-            background: #fff;
-        }
-
-        .skill-icon { font-size: 3rem; color: #8a2be2; margin-bottom: 20px; }
-
-        .cert-icon {
-            font-size: 2.5rem;
-            color: #8a2be2;
-            margin-bottom: 15px;
-            background: rgba(138, 43, 226, 0.1);
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .project-img {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.3);
-            font-size: 3rem;
-        }
-
-        /* --- CONTACT ALIGNMENT CSS --- */
-        .contact-heading { font-weight: bold; margin-bottom: 20px; color: #1a1a1a; }
-        .contact-description { color: #666; margin-bottom: 30px; }
-        .contact-info-item { display: flex; align-items: flex-start; margin-bottom: 25px; }
-        .contact-info-icon { font-size: 1.5rem; color: #8a2be2; margin-right: 20px; width: 30px; text-align: center; margin-top: 5px; }
-        .contact-info-item h6 { font-weight: bold; margin-bottom: 5px; color: #1a1a1a; }
-        .contact-info-item a, .contact-info-item p { color: #666; text-decoration: none; margin: 0; display: block; }
-        .contact-info-item a:hover { color: #8a2be2; }
-        .social-links h6 { font-weight: bold; margin-bottom: 15px; color: #1a1a1a; }
-        .social-icons-group { display: flex; gap: 15px; }
-        .social-link { width: 40px; height: 40px; background: rgba(138, 43, 226, 0.1); color: #8a2be2; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none; }
-        .social-link:hover { background: #8a2be2; color: #fff; transform: translateY(-3px); }
-        .form-input { padding: 12px 15px; border-radius: 8px; border: 1px solid #e0e0e0; background: #fff; margin-bottom: 5px; }
-        .form-input:focus { border-color: #8a2be2; box-shadow: 0 0 0 0.2rem rgba(138, 43, 226, 0.25); }
-
-        /* --- DARK MODE --- */
-        body.dark-mode { background: #0a0a0a; color: #fff; }
-        body.dark-mode .navbar { background: rgba(10, 10, 10, 0.95) !important; box-shadow: 0 2px 20px rgba(138, 43, 226, 0.3); }
-        body.dark-mode .navbar-brand, body.dark-mode .nav-link { color: #fff !important; }
-        body.dark-mode .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
-        body.dark-mode .hero h1, body.dark-mode .stat-item h3 { color: #fff; }
-        body.dark-mode .hero p, body.dark-mode .stat-item p { color: #ccc; }
-        
-        body.dark-mode .skill-card, body.dark-mode .project-card, body.dark-mode .cert-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(138, 43, 226, 0.3);
-            color: #fff;
-        }
-        
-        body.dark-mode .experience-item::before { border-color: #0a0a0a; }
-        body.dark-mode .hero-bracket { -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3); }
-
-        body.dark-mode .contact-heading, body.dark-mode .contact-info-item h6, body.dark-mode .social-links h6 { color: #fff; }
-        body.dark-mode .contact-description, body.dark-mode .contact-info-item a, body.dark-mode .contact-info-item p { color: #ccc; }
-        body.dark-mode .form-input { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1); color: #fff; }
-
-        /* Dark Mode for Ticker */
-        body.dark-mode .tech-ticker-section {
-            background: rgba(10, 10, 10, 0.9); /* Dark glass effect */
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-        body.dark-mode .tech-ticker-section::before { background: linear-gradient(to right, #1a1a2e, transparent); }
-        body.dark-mode .tech-ticker-section::after { background: linear-gradient(to left, #16213e, transparent); }
-        body.dark-mode .tech-item { color: #666; }
-        body.dark-mode .tech-item:hover { color: #fff; }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            width: 45px; height: 45px; border-radius: 50%; border: 2px solid rgba(138, 43, 226, 0.5); background: transparent; color: #8a2be2; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;
-        }
-        body.dark-mode .theme-toggle { border-color: #fff; color: #fff; }
-
-        /* Loading Screen */
-        .loader-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
-        .loader-wrapper.hidden { opacity: 0; visibility: hidden; }
-        .btn-enter { margin-top: 30px; padding: 15px 40px; border-radius: 50px; border: none; font-weight: bold; font-size: 1.2rem; cursor: pointer; background: #fff; color: #667eea; transition: transform 0.2s; }
-        .btn-enter:hover { transform: scale(1.05); }
-
-        /* WhatsApp Button */
-        .whatsapp-button { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.8rem; color: #fff; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); transition: all 0.3s ease; z-index: 100; animation: slideInUp 0.8s ease-out forwards; opacity: 0; }
-        @keyframes slideInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-        .whatsapp-button:hover { background: #20ba5a; transform: scale(1.15); }
-        .whatsapp-button::before { content: 'Chat on WhatsApp'; position: absolute; right: 80px; background: #25d366; color: #fff; padding: 8px 12px; border-radius: 5px; font-size: 0.85rem; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; font-weight: 500; }
-        .whatsapp-button:hover::before { opacity: 1; }
-
-        /* RESPONSIVE BREAKPOINTS */
-        @media (max-width: 991px) {
-            .hero { padding-top: 100px; height: auto; display: block; }
-            .hero-content { text-align: center; margin-bottom: 50px; }
-            .hero h1 { font-size: 2.5rem; }
-            .stats-row { justify-content: center; }
-            .hero-image-container { height: 500px; }
-            .hero-person-img { max-height: 450px; }
-            .tech-ticker-section { bottom: 20px; }
-        }
-
-        @media (max-width: 768px) {
-            .tech-ticker-section { padding: 15px 0; }
-            .tech-item { padding: 0 25px; font-size: 1rem; }
-            .hero-image-container { height: 400px; }
-            .hero-person-img { max-height: 380px; }
-            .hero-circle-bg { width: 350px; height: 350px; }
-            .hero-bracket { font-size: 5rem; }
-        }
-
-    </style>
+   <link rel="stylesheet" href="style.css  ">
 </head>
 <body>
 
@@ -530,6 +15,22 @@
     </a>
 
     <div class="loader-wrapper" id="loaderWrapper">
+        <!-- Floating Skill Elements -->
+        <div class="floating-elements">
+            <div class="float-skill skill-1"><i class="fab fa-html5"></i> HTML</div>
+            <div class="float-skill skill-2"><i class="fab fa-css3-alt"></i> CSS</div>
+            <div class="float-skill skill-3"><i class="fab fa-js"></i> JavaScript</div>
+            <div class="float-skill skill-4"><i class="fab fa-react"></i> React</div>
+            <div class="float-skill skill-5"><i class="fab fa-python"></i> Python</div>
+            <div class="float-skill skill-6"><i class="fab fa-figma"></i> Figma</div>
+            <div class="float-skill skill-7"><i class="fas fa-brain"></i> Artificial Intelligence</div>
+            <div class="float-skill skill-8"><i class="fas fa-robot"></i> ML Engineer</div>
+            <div class="float-skill skill-9"><i class="fab fa-node-js"></i> Node.js</div>
+            <div class="float-skill skill-10"><i class="fab fa-git-alt"></i> Git</div>
+            <div class="float-skill skill-11"><i class="fab fa-bootstrap"></i> Bootstrap</div>
+            <div class="float-skill skill-12"><i class="fas fa-database"></i> Database</div>
+        </div>
+
         <div class="loader-content text-center">
             <div class="loader-logo" style="margin-bottom: 20px;">
                 <i class="fas fa-code" style="font-size: 4rem; color: white;"></i>
@@ -540,6 +41,7 @@
         </div>
     </div>
 
+    <div class="main-content" id="mainContent">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#home">Waseem.<span style="color: #8a2be2;">A.Alvi</span></a>
@@ -564,7 +66,7 @@
     <section class="hero" id="home">
         <div class="code-symbol sym-1">&lt;/&gt;</div>
         <div class="code-symbol sym-2">{ }</div>
-        <div class="code-symbol sym-3">;</div>
+        <div class="code-symbol sym-3">//</div>
         <div class="code-symbol sym-4">&lt;div&gt;</div>
         <div class="code-symbol sym-5">func</div>
 
@@ -874,13 +376,89 @@
         </div>
     </footer>
 
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         document.getElementById('enterBtn').addEventListener('click', function() {
-            document.getElementById('loaderWrapper').classList.add('hidden');
-            document.body.style.overflow = 'auto';
+            const btn = this;
+            const loader = document.getElementById('loaderWrapper');
+            
+            // Prevent multiple clicks
+            if (btn.classList.contains('clicked')) return;
+            
+            // Add click animation to button
+            btn.classList.add('clicked');
+            
+            // Create particle burst effect
+            createParticleBurst(btn);
+            
+            // Create shockwave effect
+            createShockwave(loader);
+            
+            // Add screen flash effect
+            loader.classList.add('flash');
+            
+            // Add radial wipe transition
+            setTimeout(() => {
+                loader.classList.add('radial-wipe');
+            }, 200);
+            
+            // Add fade out animation to loader
+            setTimeout(() => {
+                loader.classList.add('fade-out');
+            }, 500);
+            
+            // Hide loader and enable scrolling after animation
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                
+                // Trigger zoom in effect on main content
+                const mainContent = document.getElementById('mainContent');
+                setTimeout(() => {
+                    mainContent.classList.add('zoom-in');
+                }, 100);
+            }, 1600);
         });
+
+        // Create particle burst animation
+        function createParticleBurst(element) {
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const particleCount = 20;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const angle = (Math.PI * 2 * i) / particleCount;
+                const velocity = 150 + Math.random() * 100;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+                
+                particle.style.left = centerX + 'px';
+                particle.style.top = centerY + 'px';
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+                particle.style.animation = `particleBurst ${0.8 + Math.random() * 0.4}s ease-out forwards`;
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 1200);
+            }
+        }
+
+        // Create shockwave effect
+        function createShockwave(container) {
+            const shockwave = document.createElement('div');
+            shockwave.className = 'shockwave';
+            container.appendChild(shockwave);
+            
+            setTimeout(() => shockwave.remove(), 1000);
+        }
 
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => {
