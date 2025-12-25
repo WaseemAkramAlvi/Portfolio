@@ -67,7 +67,8 @@
             overflow: hidden;
             background: linear-gradient(135deg, #e8f0ff 0%, #d4e7ff 100%);
             padding-top: 80px;
-            padding-bottom: 60px; /* Space for ticker */
+            /* Important: Padding bottom to accommodate the ticker overlapping the image */
+            padding-bottom: 0; 
         }
 
         /* Animated Code Symbols */
@@ -93,96 +94,10 @@
             50% { transform: translateY(-25px) rotate(5deg); }
         }
 
-        /* Floating Elements */
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .float-icon {
-            position: absolute;
-            font-size: 2.5rem;
-            color: rgba(255, 255, 255, 0.3);
-            animation: floatUpDown 6s ease-in-out infinite;
-        }
-
-        .float-1 { top: 15%; left: 8%; animation-delay: 0s; }
-        .float-2 { top: 25%; right: 15%; animation-delay: 1s; }
-        .float-3 { top: 60%; left: 12%; animation-delay: 2s; }
-        .float-4 { top: 70%; right: 20%; animation-delay: 1.5s; }
-        .float-5 { top: 40%; right: 8%; animation-delay: 0.5s; }
-        .float-6 { top: 80%; left: 18%; animation-delay: 2.5s; }
-
-        .float-shape {
-            position: absolute;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-            animation: floatRotate 8s ease-in-out infinite;
-        }
-
-        .shape-1 {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 3%;
-            animation-delay: 0s;
-        }
-
-        .shape-2 {
-            width: 60px;
-            height: 60px;
-            top: 50%;
-            right: 5%;
-            animation-delay: 2s;
-        }
-
-        .shape-3 {
-            width: 100px;
-            height: 100px;
-            top: 75%;
-            left: 25%;
-            animation-delay: 1s;
-        }
-
-        .shape-4 {
-            width: 70px;
-            height: 70px;
-            top: 35%;
-            right: 25%;
-            animation-delay: 3s;
-        }
-
-        @keyframes floatUpDown {
-            0%, 100% { 
-                transform: translateY(0) rotate(0deg); 
-                opacity: 0.3;
-            }
-            50% { 
-                transform: translateY(-30px) rotate(10deg); 
-                opacity: 0.5;
-            }
-        }
-
-        @keyframes floatRotate {
-            0%, 100% { 
-                transform: translateY(0) rotate(0deg) scale(1); 
-                opacity: 0.2;
-            }
-            50% { 
-                transform: translateY(-40px) rotate(180deg) scale(1.1); 
-                opacity: 0.4;
-            }
-        }
-
         .hero-content {
             position: relative;
             z-index: 2;
+            padding-bottom: 50px; /* Push content up slightly on mobile */
         }
 
         .hero h1 {
@@ -267,7 +182,8 @@
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            padding-bottom: 30px;
+            /* Ensure bottom padding is small so image sits near the bar */
+            padding-bottom: 0px; 
         }
 
         .hero-circle-bg {
@@ -278,52 +194,28 @@
             background: radial-gradient(circle, rgba(138, 43, 226, 0.2) 0%, rgba(218, 112, 214, 0.1) 50%, transparent 70%);
             border: 3px solid rgba(138, 43, 226, 0.4);
             z-index: 0;
-            bottom: 0;
+            bottom: 80px; /* Raised slightly so ticker covers feet/cut */
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 0 80px rgba(138, 43, 226, 0.3),
-                        inset 0 0 60px rgba(138, 43, 226, 0.1);
+            box-shadow: 0 0 80px rgba(138, 43, 226, 0.3), inset 0 0 60px rgba(138, 43, 226, 0.1);
             animation: pulseGlow 4s infinite alternate;
         }
 
-        .hero-circle-bg::before {
-            content: '';
-            position: absolute;
-            top: -12px; left: -12px; right: -12px; bottom: -12px;
-            border-radius: 50%;
-            border: 2px dashed rgba(138, 43, 226, 0.4);
-            animation: spinSlow 30s linear infinite;
-        }
-
         @keyframes pulseGlow {
-            0% { 
-                transform: translateX(-50%) scale(1); 
-                box-shadow: 0 0 80px rgba(138, 43, 226, 0.3), inset 0 0 60px rgba(138, 43, 226, 0.1); 
-            }
-            100% { 
-                transform: translateX(-50%) scale(1.05); 
-                box-shadow: 0 0 100px rgba(138, 43, 226, 0.5), inset 0 0 80px rgba(138, 43, 226, 0.2); 
-            }
-        }
-
-        @keyframes spinSlow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            0% { transform: translateX(-50%) scale(1); box-shadow: 0 0 80px rgba(138, 43, 226, 0.3); }
+            100% { transform: translateX(-50%) scale(1.05); box-shadow: 0 0 100px rgba(138, 43, 226, 0.5); }
         }
 
         .hero-person-img {
             position: relative;
             z-index: 2;
             height: auto;
-            max-height: 580px;
-            max-width: 420px;
+            max-height: 600px; /* Taller image */
+            max-width: 90%;
             width: auto;
             filter: drop-shadow(0 15px 40px rgba(0,0,0,0.2));
-            transition: transform 0.3s ease;
-        }
-
-        .hero-person-img:hover {
-            transform: scale(1.02);
+            /* Push image down so feet are behind the ticker */
+            margin-bottom: -10px; 
         }
 
         .hero-bracket {
@@ -357,47 +249,38 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
-        }
-
-        /* --- INFINITE SCROLLING SKILLS TICKER --- */
+        /* --- SKILLS SLIDER (TICKER) - Overlapping Image --- */
         .tech-ticker-section {
-            background: #fff;
+            position: absolute;
+            bottom: 40px; /* Positioned to cover the bottom cut of image */
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85); /* Glass effect */
+            backdrop-filter: blur(15px); /* Strong blur to hide cut */
             padding: 25px 0;
-            overflow: hidden;
+            border-top: 1px solid rgba(138, 43, 226, 0.1);
             border-bottom: 1px solid rgba(138, 43, 226, 0.1);
-            position: relative;
-            z-index: 10;
+            z-index: 10; /* Above the image */
             display: flex;
             align-items: center;
-            top: -250px;
+            overflow: hidden;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
         }
 
         .tech-track {
             display: flex;
             width: fit-content;
-            animation: scroll 30s linear infinite;
+            animation: scroll 40s linear infinite;
         }
 
         .tech-item {
-            padding: 0 40px;
+            padding: 0 50px;
             text-align: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #888;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #ccc; /* Light gray initially like reference */
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -417,7 +300,7 @@
             content: "";
             position: absolute;
             top: 0;
-            width: 100px;
+            width: 150px;
             height: 100%;
             z-index: 2;
             pointer-events: none;
@@ -425,27 +308,23 @@
 
         .tech-ticker-section::before {
             left: 0;
-            background: linear-gradient(to right, #f8f9fa, transparent);
+            background: linear-gradient(to right, #e8f0ff, transparent); /* Match hero bg */
         }
 
         .tech-ticker-section::after {
             right: 0;
-            background: linear-gradient(to left, #f8f9fa, transparent);
+            background: linear-gradient(to left, #d4e7ff, transparent); /* Match hero bg */
         }
 
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Moves exactly half way (one set length) */
+            100% { transform: translateX(-50%); }
         }
 
         /* --- SECTIONS (ABOUT, SKILLS, ETC) --- */
         section {
             padding: 100px 0;
             position: relative;
-        }
-
-        section#about {
-            padding-top: 0px;
         }
 
         .section-title {
@@ -558,98 +437,20 @@
         }
 
         /* --- CONTACT ALIGNMENT CSS --- */
-        .contact-heading {
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #1a1a1a;
-        }
+        .contact-heading { font-weight: bold; margin-bottom: 20px; color: #1a1a1a; }
+        .contact-description { color: #666; margin-bottom: 30px; }
+        .contact-info-item { display: flex; align-items: flex-start; margin-bottom: 25px; }
+        .contact-info-icon { font-size: 1.5rem; color: #8a2be2; margin-right: 20px; width: 30px; text-align: center; margin-top: 5px; }
+        .contact-info-item h6 { font-weight: bold; margin-bottom: 5px; color: #1a1a1a; }
+        .contact-info-item a, .contact-info-item p { color: #666; text-decoration: none; margin: 0; display: block; }
+        .contact-info-item a:hover { color: #8a2be2; }
+        .social-links h6 { font-weight: bold; margin-bottom: 15px; color: #1a1a1a; }
+        .social-icons-group { display: flex; gap: 15px; }
+        .social-link { width: 40px; height: 40px; background: rgba(138, 43, 226, 0.1); color: #8a2be2; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none; }
+        .social-link:hover { background: #8a2be2; color: #fff; transform: translateY(-3px); }
+        .form-input { padding: 12px 15px; border-radius: 8px; border: 1px solid #e0e0e0; background: #fff; margin-bottom: 5px; }
+        .form-input:focus { border-color: #8a2be2; box-shadow: 0 0 0 0.2rem rgba(138, 43, 226, 0.25); }
 
-        .contact-description {
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .contact-info-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-        }
-
-        .contact-info-icon {
-            font-size: 1.5rem;
-            color: #8a2be2;
-            margin-right: 20px;
-            width: 30px;
-            text-align: center;
-            margin-top: 5px;
-        }
-
-        .contact-info-item h6 {
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #1a1a1a;
-        }
-
-        .contact-info-item a, .contact-info-item p {
-            color: #666;
-            text-decoration: none;
-            margin: 0;
-            display: block;
-        }
-
-        .contact-info-item a:hover {
-            color: #8a2be2;
-        }
-
-        .social-links h6 {
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #1a1a1a;
-        }
-
-        .social-icons-group {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(138, 43, 226, 0.1);
-            color: #8a2be2;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-link:hover {
-            background: #8a2be2;
-            color: #fff;
-            transform: translateY(-3px);
-        }
-
-        .form-input {
-            padding: 12px 15px;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-            background: #fff;
-            margin-bottom: 5px;
-        }
-
-        .form-input:focus {
-            border-color: #8a2be2;
-            box-shadow: 0 0 0 0.2rem rgba(138, 43, 226, 0.25);
-        }
-        footer {
-           
-            padding: 10px 0;
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-        }
         /* --- DARK MODE --- */
         body.dark-mode { background: #0a0a0a; color: #fff; }
         body.dark-mode .navbar { background: rgba(10, 10, 10, 0.95) !important; box-shadow: 0 2px 20px rgba(138, 43, 226, 0.3); }
@@ -667,194 +468,68 @@
         body.dark-mode .experience-item::before { border-color: #0a0a0a; }
         body.dark-mode .hero-bracket { -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3); }
 
-        body.dark-mode .contact-heading,
-        body.dark-mode .contact-info-item h6,
-        body.dark-mode .social-links h6 { color: #fff; }
-        body.dark-mode .contact-description,
-        body.dark-mode .contact-info-item a,
-        body.dark-mode .contact-info-item p { color: #ccc; }
-        body.dark-mode .form-input {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
+        body.dark-mode .contact-heading, body.dark-mode .contact-info-item h6, body.dark-mode .social-links h6 { color: #fff; }
+        body.dark-mode .contact-description, body.dark-mode .contact-info-item a, body.dark-mode .contact-info-item p { color: #ccc; }
+        body.dark-mode .form-input { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1); color: #fff; }
 
         /* Dark Mode for Ticker */
         body.dark-mode .tech-ticker-section {
-            background: #0a0a0a;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(10, 10, 10, 0.9); /* Dark glass effect */
+            border-color: rgba(255, 255, 255, 0.1);
         }
-        body.dark-mode .tech-ticker-section::before {
-            background: linear-gradient(to right, #0a0a0a, transparent);
-        }
-        body.dark-mode .tech-ticker-section::after {
-            background: linear-gradient(to left, #0a0a0a, transparent);
-        }
+        body.dark-mode .tech-ticker-section::before { background: linear-gradient(to right, #1a1a2e, transparent); }
+        body.dark-mode .tech-ticker-section::after { background: linear-gradient(to left, #16213e, transparent); }
         body.dark-mode .tech-item { color: #666; }
         body.dark-mode .tech-item:hover { color: #fff; }
 
         /* Theme Toggle */
         .theme-toggle {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            border: 2px solid rgba(138, 43, 226, 0.5);
-            background: transparent;
-            color: #8a2be2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            width: 45px; height: 45px; border-radius: 50%; border: 2px solid rgba(138, 43, 226, 0.5); background: transparent; color: #8a2be2; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;
         }
-        
         body.dark-mode .theme-toggle { border-color: #fff; color: #fff; }
 
         /* Loading Screen */
-        .loader-wrapper {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-        
-        .loader-wrapper.hidden { 
-            opacity: 0; 
-            visibility: hidden;
-            transform: scale(0) rotate(180deg);
-        }
-        
-        .btn-enter {
-            margin-top: 30px;
-            padding: 15px 40px;
-            border-radius: 50px;
-            border: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            cursor: pointer;
-            background: #fff;
-            color: #667eea;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
+        .loader-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease, visibility 0.5s ease; }
+        .loader-wrapper.hidden { opacity: 0; visibility: hidden; }
+        .btn-enter { margin-top: 30px; padding: 15px 40px; border-radius: 50px; border: none; font-weight: bold; font-size: 1.2rem; cursor: pointer; background: #fff; color: #667eea; transition: transform 0.2s; }
         .btn-enter:hover { transform: scale(1.05); }
-        
-        .btn-enter.clicked {
-            animation: buttonExplode 0.8s ease-out forwards;
-        }
-        
-        @keyframes buttonExplode {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.8);
-            }
-            50% {
-                transform: scale(1.2);
-                box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.4);
-            }
-            100% {
-                transform: scale(50);
-                box-shadow: 0 0 0 60px rgba(255, 255, 255, 0);
-                opacity: 0;
-            }
+
+        /* WhatsApp Button */
+        .whatsapp-button { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.8rem; color: #fff; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); transition: all 0.3s ease; z-index: 100; animation: slideInUp 0.8s ease-out forwards; opacity: 0; }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        .whatsapp-button:hover { background: #20ba5a; transform: scale(1.15); }
+        .whatsapp-button::before { content: 'Chat on WhatsApp'; position: absolute; right: 80px; background: #25d366; color: #fff; padding: 8px 12px; border-radius: 5px; font-size: 0.85rem; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; font-weight: 500; }
+        .whatsapp-button:hover::before { opacity: 1; }
+
+        /* RESPONSIVE BREAKPOINTS */
+        @media (max-width: 991px) {
+            .hero { padding-top: 100px; height: auto; display: block; }
+            .hero-content { text-align: center; margin-bottom: 50px; }
+            .hero h1 { font-size: 2.5rem; }
+            .stats-row { justify-content: center; }
+            .hero-image-container { height: 500px; }
+            .hero-person-img { max-height: 450px; }
+            .tech-ticker-section { bottom: 20px; }
         }
 
-        /* WhatsApp Floating Button */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: #25d366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 1.8rem;
-            color: #fff;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-            z-index: 100;
-            animation: slideInUp 0.8s ease-out forwards;
-            opacity: 0;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .whatsapp-button:hover {
-            background: #20ba5a;
-            transform: scale(1.15);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
-        }
-
-        .whatsapp-button:active {
-            transform: scale(0.95);
-        }
-
-        /* Tooltip for WhatsApp */
-        .whatsapp-button::before {
-            content: 'Chat on WhatsApp';
-            position: absolute;
-            right: 80px;
-            background: #25d366;
-            color: #fff;
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-size: 0.85rem;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            font-weight: 500;
-        }
-
-        .whatsapp-button:hover::before {
-            opacity: 1;
+        @media (max-width: 768px) {
+            .tech-ticker-section { padding: 15px 0; }
+            .tech-item { padding: 0 25px; font-size: 1rem; }
+            .hero-image-container { height: 400px; }
+            .hero-person-img { max-height: 380px; }
+            .hero-circle-bg { width: 350px; height: 350px; }
+            .hero-bracket { font-size: 5rem; }
         }
 
     </style>
 </head>
 <body>
 
-    <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/+923075579807?text=Hello%20Waseem%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" class="whatsapp-button" title="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <div class="loader-wrapper" id="loaderWrapper">
-        <!-- Floating Elements -->
-        <div class="floating-elements">
-            <div class="float-icon float-1"><i class="fas fa-code"></i></div>
-            <div class="float-icon float-2"><i class="fas fa-laptop-code"></i></div>
-            <div class="float-icon float-3"><i class="fas fa-palette"></i></div>
-            <div class="float-icon float-4"><i class="fas fa-database"></i></div>
-            <div class="float-icon float-5"><i class="fab fa-react"></i></div>
-            <div class="float-icon float-6"><i class="fas fa-server"></i></div>
-            <div class="float-icon float-7"><i class="fas fa-paint-brush"></i></div>
-            <div class="float-shape shape-1"></div>
-            <div class="float-shape shape-2"></div>
-            <div class="float-shape shape-3"></div>
-            <div class="float-shape shape-4"></div>
-        </div>
-        
         <div class="loader-content text-center">
             <div class="loader-logo" style="margin-bottom: 20px;">
                 <i class="fas fa-code" style="font-size: 4rem; color: white;"></i>
@@ -893,12 +568,12 @@
         <div class="code-symbol sym-4">&lt;div&gt;</div>
         <div class="code-symbol sym-5">func</div>
 
-        <div class="container">
+        <div class="container" style="position: relative; z-index: 5;">
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content">
                     <h1>Instructor & IT Specialist</h1>
                     <p>Passionate Instructor & IT Specialist with a strong background in Web Designing & Development, Graphics Designing, and MS Office Training. BS in Software Engineering with 7+ years of experience.</p>
-                    <div class="d-flex gap-3 mb-5">
+                    <div class="d-flex gap-3 mb-5 justify-content-center justify-content-lg-start">
                         <button class="btn btn-custom">Let's Talk</button>
                         <button class="btn btn-outline-custom" id="downloadCVBtn">Download CV</button>
                     </div>
@@ -928,41 +603,38 @@
                 </div>
             </div>
         </div>
-        
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down" style="font-size: 2rem; color: #8a2be2;"></i>
-        </div>
-    </section>
 
-    <div class="tech-ticker-section">
-        <div class="tech-track">
-            <div class="tech-item">HTML5</div>
-            <div class="tech-item">CSS3</div>
-            <div class="tech-item">JavaScript</div>
-            <div class="tech-item">React</div>
-            <div class="tech-item">Node.js</div>
-            <div class="tech-item">PHP</div>
-            <div class="tech-item">MySQL</div>
-            <div class="tech-item">Python</div>
-            <div class="tech-item">Git</div>
-            <div class="tech-item">GitHub</div>
-            <div class="tech-item">Figma</div>
-            <div class="tech-item">Photoshop</div>
-            
-            <div class="tech-item">HTML5</div>
-            <div class="tech-item">CSS3</div>
-            <div class="tech-item">JavaScript</div>
-            <div class="tech-item">React</div>
-            <div class="tech-item">Node.js</div>
-            <div class="tech-item">PHP</div>
-            <div class="tech-item">MySQL</div>
-            <div class="tech-item">Python</div>
-            <div class="tech-item">Git</div>
-            <div class="tech-item">GitHub</div>
-            <div class="tech-item">Figma</div>
-            <div class="tech-item">Photoshop</div>
+        <div class="tech-ticker-section">
+            <div class="tech-track">
+                <div class="tech-item">GIT</div>
+                <div class="tech-item">GITHUB</div>
+                <div class="tech-item">FIGMA</div>
+                <div class="tech-item">PHOTOSHOP</div>
+                <div class="tech-item">HTML5</div>
+                <div class="tech-item">CSS3</div>
+                <div class="tech-item">JAVASCRIPT</div>
+                <div class="tech-item">REACT</div>
+                <div class="tech-item">NODE.JS</div>
+                <div class="tech-item">PHP</div>
+                <div class="tech-item">MYSQL</div>
+                <div class="tech-item">PYTHON</div>
+                
+                <div class="tech-item">GIT</div>
+                <div class="tech-item">GITHUB</div>
+                <div class="tech-item">FIGMA</div>
+                <div class="tech-item">PHOTOSHOP</div>
+                <div class="tech-item">HTML5</div>
+                <div class="tech-item">CSS3</div>
+                <div class="tech-item">JAVASCRIPT</div>
+                <div class="tech-item">REACT</div>
+                <div class="tech-item">NODE.JS</div>
+                <div class="tech-item">PHP</div>
+                <div class="tech-item">MYSQL</div>
+                <div class="tech-item">PYTHON</div>
+            </div>
         </div>
-    </div>
+        
+    </section>
 
     <section id="about">
         <div class="container">
@@ -1044,14 +716,14 @@
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
                     <div class="cert-card text-center">
-                        <div class="cert-icon"><i class="fas fa-code"></i></div>
+                        <div class="cert-icon"><i class="fab fa-ibm"></i></div>
                         <h5>IBM UI UX Designer</h5>
                         <p class="text-muted small">Wireframing, Prototyping (Figma), UX Research</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="cert-card text-center">
-                        <div class="cert-icon"><i class="fas fa-paint-brush"></i></div>
+                        <div class="cert-icon"><i class="fab fa-adobe"></i></div>
                         <h5>Adobe Graphic Designer</h5>
                         <p class="text-muted small">Design Fundamentals, Gen AI Content, Image Editing</p>
                     </div>
@@ -1205,22 +877,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
-        // Loading Screen Logic
         document.getElementById('enterBtn').addEventListener('click', function() {
-            const btn = this;
-            const loader = document.getElementById('loaderWrapper');
-            
-            // Add clicked animation to button
-            btn.classList.add('clicked');
-            
-            // Hide loader after animation completes
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }, 600);
+            document.getElementById('loaderWrapper').classList.add('hidden');
+            document.body.style.overflow = 'auto';
         });
 
-        // Theme Toggle Logic
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
@@ -1234,7 +895,6 @@
             }
         });
 
-        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1243,7 +903,6 @@
             });
         });
 
-        // Download CV Function
         document.getElementById('downloadCVBtn').addEventListener('click', function() {
             generateAndDownloadCV();
         });
@@ -1252,78 +911,14 @@
             const cvHTML = `
                 <div style="font-family: Arial, sans-serif; padding: 20px; color: #333; line-height: 1.6;">
                     <h1 style="text-align: center; margin-bottom: 5px;">WASEEM AKRAM</h1>
-                    <p style="text-align: center; margin: 0 0 20px 0; font-size: 12px;">
-                        Islamabad, Pakistan | waseem@example.com | +1 (234) 567-890
-                    </p>
-                    
-                    <h3 style="border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 20px;">PROFESSIONAL SUMMARY</h3>
-                    <p>Passionate Instructor & IT Specialist with 7+ years of experience in Web Design, Development, Graphics Design, and MS Office Training. BS in Software Engineering with expertise in full-stack development, UI/UX design, and technical training.</p>
-                    
-                    <h3 style="border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 20px;">PROFESSIONAL EXPERIENCE</h3>
-                    
-                    <h4 style="margin: 15px 0 5px 0;">Senior Instructor & Web Developer | CZone Software House | 2022 - Present</h4>
-                    <ul style="margin: 5px 0;">
-                        <li>Led frontend development team and architected scalable web applications</li>
-                        <li>Delivered technical training programs to 50+ students</li>
-                        <li>Implemented responsive solutions using React and modern JavaScript</li>
-                        <li>Completed 20+ successful client projects</li>
-                    </ul>
-                    
-                    <h4 style="margin: 15px 0 5px 0;">Full Stack Developer | Creative Agency Global | 2019 - 2022</h4>
-                    <ul style="margin: 5px 0;">
-                        <li>Developed custom e-commerce solutions and web applications</li>
-                        <li>Managed backend API integrations using Node.js and PHP</li>
-                        <li>Created UI/UX designs using Figma and Adobe Suite</li>
-                        <li>Delivered 30+ projects on time and within budget</li>
-                    </ul>
-                    
-                    <h4 style="margin: 15px 0 5px 0;">Junior Web Developer | StartUp Hub | 2018 - 2019</h4>
-                    <ul style="margin: 5px 0;">
-                        <li>Collaborated on UI/UX design implementation</li>
-                        <li>Built responsive websites using HTML5, CSS3, JavaScript</li>
-                        <li>Supported backend development with PHP and MySQL</li>
-                    </ul>
-                    
-                    <h3 style="border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 20px;">EDUCATION</h3>
-                    <p><strong>Bachelor of Science in Software Engineering</strong> | 2017 | Technical University, Islamabad</p>
-                    
-                    <h3 style="border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 20px;">TECHNICAL SKILLS</h3>
-                    <p><strong>Frontend:</strong> HTML5, CSS3, JavaScript, React, Vue.js, Angular, Figma</p>
-                    <p><strong>Backend:</strong> Node.js, PHP, Python, Java, Express.js</p>
-                    <p><strong>Databases:</strong> MongoDB, MySQL, PostgreSQL</p>
-                    <p><strong>Tools:</strong> Git, GitHub, Docker, AWS, Azure, Adobe Suite</p>
-                    
-                    <h3 style="border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 20px;">CERTIFICATIONS</h3>
-                    <ul style="margin: 5px 0;">
-                        <li>IBM UI UX Designer - Wireframing, Prototyping, UX Research</li>
-                        <li>Adobe Graphic Designer - Design Fundamentals, Image Editing</li>
-                        <li>Microsoft Azure AI - AI Fundamentals, Machine Learning</li>
-                        <li>Meta Front-End Developer - HTML/CSS in Depth</li>
-                        <li>CISCO Network Essentials - Networking Concepts</li>
-                        <li>Microsoft Office Specialist - Word, Excel, PowerPoint</li>
-                    </ul>
-                    
-                    <h3 style="border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 20px;">KEY PROJECTS</h3>
-                    <ul style="margin: 5px 0;">
-                        <li>E-Commerce Platform - Full-stack with payment integration (React, Node.js, MongoDB)</li>
-                        <li>Custom Web Development - Client websites with modern technologies</li>
-                        <li>UI/UX Capstone Project - Research and high-fidelity prototyping</li>
-                        <li>Brand Identity Design - Logos and marketing graphics</li>
-                    </ul>
+                    <p style="text-align: center; margin: 0 0 20px 0; font-size: 12px;">Islamabad, Pakistan | waseem@example.com | +1 (234) 567-890</p>
+                    <h3 style="border-bottom: 2px solid #333;">PROFESSIONAL SUMMARY</h3>
+                    <p>Passionate Instructor & IT Specialist...</p>
                 </div>
             `;
-            
             const element = document.createElement('div');
             element.innerHTML = cvHTML;
-            
-            const opt = {
-                margin: 10,
-                filename: 'Waseem_Akram_ATS_CV.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
-            };
-            
+            const opt = { margin: 10, filename: 'Waseem_Akram_CV.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' } };
             html2pdf().set(opt).from(element).save();
         }
     </script>
