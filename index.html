@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Waseem Akram - Instructor & IT Specialist</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%238a2be2;stop-opacity:1' /><stop offset='100%25' style='stop-color:%23da70d6;stop-opacity:1' /></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><path d='M25,35 L35,35 L35,65 L25,65 Z M40,35 L50,35 L50,65 L40,65 Z' fill='white' opacity='0.9'/><circle cx='67' cy='40' r='8' fill='white' opacity='0.9'/><path d='M75,52 Q67,58 59,52' stroke='white' stroke-width='3' fill='none' opacity='0.9'/><text x='50' y='90' font-family='Arial,sans-serif' font-size='12' font-weight='bold' text-anchor='middle' fill='white'>WA</text></svg>">
+    <link rel="alternate icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA7AAAAOwBeShxvQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAALcSURBVFiF7ZbPaxNBFMc/M7ubTZOmMYnGH0RFRPDkQRDB/0C8ePLgyZOIBy8evHj14sWDBy9ePAjixYMHLx4EQfwBHkREJGqbpkmzSZpmM7Mzb4ckNk2ym2xFPPiF5bHv7fd9O/Nm3gj+41/5A4DrOtRqNQAqlQq6riPLMoIgEI/HicVihMNh0uk0iqKQyWRwHGejAKqqkkql6Ha72LaNbduYpkm9XkfTNERRJJlMsrS0xPz8PKIo4vf78fv9rAOxWIxGo0Gz2cQwDEKhELFYDFmWMU0Tz/MwDANZlllcXAQgGAyyuLiI53kABAIBPM9jbW2NaDRKoVDA7/eTy+WoVqvk83kqlQqSJNFutykWi5imiaZphEIhisUiqVSKfD5PoVCg3W7T7XZpNpvMzMygaRqpVIpKpbJRAFmWMQwDz/OwLAvDMBBFkU6ng+d5+Hw+PM/DNE0Gg4Hjd1EUsW0b27YZDAb4fD5M00SWZXzHBdjb26Pf7xOJRIjH43ieh2maGIbBYDBAURQCgcD5vSBJEpZl4XkehmGwsrJCr9dDURRUVUUUxfMB+v0+lmXRbrfZ3d3F8zwMw0BRFHw+H6qqUqvVaLValEolFEXB7/czHo/RdR1d1+n3+ziOw3g8pt/vE4lECIfDGwMIgoAgCMiyjKIoJBIJ5ubmSCaTJJNJZmdnmZqaIhwOk8lkxuef4L/yDXOTfZ6nYRYhAAAAAElFTkSuQmCC">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
    <link rel="stylesheet" href="style.css  ">
@@ -13,6 +18,11 @@
     <a href="https://wa.me/+923075579807?text=Hello%20Waseem%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" class="whatsapp-button" title="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <div class="loader-wrapper" id="loaderWrapper">
         <!-- Floating Skill Elements -->
@@ -459,6 +469,26 @@
             
             setTimeout(() => shockwave.remove(), 1000);
         }
+
+        // Scroll to Top Button Functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        // Show/hide scroll to top button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+        
+        // Smooth scroll to top when button is clicked
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => {
