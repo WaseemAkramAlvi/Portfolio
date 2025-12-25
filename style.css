@@ -458,7 +458,7 @@
             padding: 40px 0;
             display: flex;
             align-items: center;
-            overflow: hidden;
+            overflow: visible; /* allow tooltips to overflow */
             position: relative;
             border-top: 1px solid rgba(138, 43, 226, 0.1);
             border-bottom: 1px solid rgba(138, 43, 226, 0.1);
@@ -480,6 +480,7 @@
             gap: 15px;
             white-space: nowrap;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .cert-item i {
@@ -516,6 +517,321 @@
         .cert-item:hover .cert-icon {
             color: #da70d6;
             transform: scale(1.15);
+        }
+
+        /* Glassy tooltip */
+        .cert-item::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-10px);
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(10px) saturate(140%);
+            -webkit-backdrop-filter: blur(10px) saturate(140%);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            color: #111;
+            white-space: normal;
+            width: max-content;
+            max-width: 280px;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.2s ease;
+            z-index: 5;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        body.dark-mode .cert-item::after {
+            background: rgba(20, 20, 30, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #f4f4f4;
+        }
+
+        .cert-item:hover::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-16px);
+        }
+
+        /* Glassy modal overlay */
+        .cert-modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.35);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 2000;
+        }
+        .cert-modal.show { display: flex; }
+
+        /* --- LIGHTNING CARD STYLES --- */
+        .lightning-card {
+            position: relative;
+            padding: 4px;
+            border-radius: 30px;
+            overflow: hidden;
+            background: transparent;
+            z-index: 1;
+            box-shadow: 0 10px 40px rgba(138, 43, 226, 0.2);
+            transition: transform 0.3s ease;
+            width: min(850px, 95vw);
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lightning-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Rotating Lightning Gradient Border */
+        .lightning-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                transparent,
+                transparent,
+                transparent,
+                #8a2be2,
+                #da70d6,
+                #8a2be2
+            );
+            transform: translate(-50%, -50%);
+            animation: rotateLightning 6s linear infinite;
+            z-index: -2;
+        }
+
+        /* Inner Glass Background */
+        .lightning-card::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 26px;
+            z-index: -1;
+        }
+
+        @keyframes rotateLightning {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Card Content with scrollable list */
+        .card-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Make cert-list scrollable */
+        .cert-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 55vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        /* Custom scrollbar styling */
+        .cert-list::-webkit-scrollbar {
+            width: 8px;
+        }
+        .cert-list::-webkit-scrollbar-track {
+            background: rgba(138, 43, 226, 0.1);
+            border-radius: 10px;
+        }
+        .cert-list::-webkit-scrollbar-thumb {
+            background: rgba(138, 43, 226, 0.4);
+            border-radius: 10px;
+        }
+        .cert-list::-webkit-scrollbar-thumb:hover {
+            background: rgba(138, 43, 226, 0.6);
+        }
+
+        /* Firefox scrollbar */
+        .cert-list {
+            scrollbar-color: rgba(138, 43, 226, 0.4) rgba(138, 43, 226, 0.1);
+            scrollbar-width: thin;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .cert-badge {
+            min-width: 50px;
+            height: 50px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            border: 2px solid #8a2be2;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            flex-shrink: 0;
+        }
+
+        /* Skill popup variant: remove circle background */
+        .cert-modal.skill-mode .cert-badge {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            color: #8a2be2;
+            min-width: 42px;
+            height: 42px;
+            font-size: 1.4rem;
+        }
+
+        .cert-text h5 {
+            margin: 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #1a1a1a;
+        }
+
+        .cert-text p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .cert-text .date {
+            font-size: 0.8rem;
+            color: #8a2be2;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* Brand Logo */
+        .brand-logo {
+            font-size: 5rem;
+            font-weight: 900;
+            color: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            letter-spacing: -2px;
+        }
+
+        .brand-logo i {
+            font-size: 4rem;
+            color: #8a2be2;
+            margin-bottom: 10px;
+        }
+
+        .brand-logo span {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        /* Separator Line */
+        .border-end-md {
+            border-right: 2px dashed rgba(138, 43, 226, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .border-end-md {
+                border-right: none;
+                border-bottom: 2px dashed rgba(138, 43, 226, 0.2);
+                padding-bottom: 30px;
+                margin-bottom: 30px;
+            }
+            .brand-logo {
+                font-size: 3rem;
+            }
+            .brand-logo i {
+                font-size: 2.5rem;
+            }
+            .brand-logo span {
+                font-size: 1.3rem;
+            }
+            .card-content {
+                padding: 25px;
+            }
+            .cert-list {
+                max-height: 50vh;
+                gap: 15px;
+            }
+        }
+
+        /* Modal Close Button */
+        .cert-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.5);
+            color: #333;
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            z-index: 10;
+        }
+        .cert-modal-close:hover {
+            background: rgba(255,255,255,0.7);
+        }
+
+        /* --- DARK MODE --- */
+        body.dark-mode .lightning-card::after {
+            background: rgba(20, 20, 30, 0.92);
+        }
+
+        body.dark-mode .brand-logo {
+            color: #fff;
+        }
+
+        body.dark-mode .cert-text h5 {
+            color: #fff;
+        }
+
+        body.dark-mode .cert-text p {
+            color: #aaa;
+        }
+
+        body.dark-mode .cert-badge {
+            background: #fff;
+            color: #1a1a1a;
+        }
+
+        body.dark-mode .cert-modal-close {
+            background: rgba(0,0,0,0.4);
+            color: #fff;
+        }
+        body.dark-mode .cert-modal-close:hover {
+            background: rgba(0,0,0,0.6);
+        }
+
+        body.dark-mode .border-end-md {
+            border-right-color: rgba(138, 43, 226, 0.3);
+            border-bottom-color: rgba(138, 43, 226, 0.3);
         }
 
         /* Specific adjustments for IBM and Adobe icons */

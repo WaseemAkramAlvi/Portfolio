@@ -196,28 +196,28 @@
             <h2 class="section-title">My Skills</h2>
             <div class="row">
                 <div class="col-lg-3 col-md-6">
-                    <div class="skill-card text-center">
+                    <div class="skill-card text-center" data-skill="Web Development">
                         <i class="fas fa-code skill-icon"></i>
                         <h4>Web Development</h4>
                         <p>HTML, CSS, JavaScript, PHP, Bootstrap, WordPress</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="skill-card text-center">
+                    <div class="skill-card text-center" data-skill="Graphic Design">
                         <i class="fas fa-paint-brush skill-icon"></i>
                         <h4>Graphic Design</h4>
                         <p>Adobe Photoshop, Illustrator, Figma, Logo Design</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="skill-card text-center">
+                    <div class="skill-card text-center" data-skill="AI & Tech">
                         <i class="fas fa-brain skill-icon"></i>
                         <h4>AI & Tech</h4>
                         <p>Artificial Intelligence, Python, MS Office Suite</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <div class="skill-card text-center">
+                    <div class="skill-card text-center" data-skill="Mentoring">
                         <i class="fas fa-chalkboard-teacher skill-icon"></i>
                         <h4>Mentoring</h4>
                         <p>Curriculum Development, Project-Based Learning</p>
@@ -233,57 +233,57 @@
         </div>
         <div class="cert-ticker-section">
             <div class="cert-track">
-                <div class="cert-item">
+                <div class="cert-item" data-tooltip="IBM: AI, Data Science & Cloud fundamentals" data-detail="IBM certifications focus on AI, data science, cloud and enterprise technology skills validated through practical projects.">
                     <img src="ibm.svg" alt="ibm logo" class="cert-icon cert-ibm">
                     <span>IBM</span>
                 </div>
-                <div class="cert-item">
+                <div class="cert-item" data-tooltip="Adobe: Creative Cloud design tools & workflows" data-detail="Adobe certifications cover Photoshop, Illustrator and Creative Cloud workflows, emphasizing real-world design projects.">
                     <svg class="cert-icon cert-adobe" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13.966 22.624l-1.69-4.281H8.122l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884L24 22.624Z"/>
                     </svg>
                     <span>Adobe</span>
                 </div>
-                <div class="cert-item">
+                <div class="cert-item" data-tooltip="Microsoft: Cloud, productivity & development badges" data-detail="Microsoft certifications validate skills across Azure cloud, productivity suites and developer tools with role-based paths.">
                     <i class="fab fa-microsoft"></i>
                     <span>Microsoft</span>
                 </div>
-                <div class="cert-item">
+                <div class="cert-item" data-tooltip="Meta: Front-end, UX & social platforms" data-detail="Meta programs emphasize front-end development, UX practices and building for large-scale social platforms.">
                     <i class="fab fa-meta"></i>
                     <span>Meta</span>
                 </div>
-                <div class="cert-item">
+                <div class="cert-item" data-tooltip="CISCO: Networking, security & infrastructure" data-detail="Cisco tracks include networking foundations, security, routing/switching and modern infrastructure operations.">
                     <i class="fas fa-network-wired"></i>
                     <span>CISCO</span>
                 </div>
-                <div class="cert-item">
+                <div class="cert-item" data-tooltip="Google: Analytics, cloud & automation" data-detail="Google credentials span analytics, cloud computing, automation and modern web performance best practices.">
                     <i class="fab fa-google"></i>
                     <span>Google</span>
                 </div>
                 
                 <!-- Duplicate for seamless loop -->
-                <div class="cert-item">
+                <div class="cert-item" data-tooltip="IBM: AI, Data Science & Cloud fundamentals" data-detail="IBM certifications focus on AI, data science, cloud and enterprise technology skills validated through practical projects.">
                     <img src="ibm.svg" alt="ibm logo" class="cert-icon cert-ibm">
                     <span>IBM</span>
                 </div>
-                <div class="cert-item">
+                <div class="cert-item" data-tooltip="Adobe: Creative Cloud design tools & workflows" data-detail="Adobe certifications cover Photoshop, Illustrator and Creative Cloud workflows, emphasizing real-world design projects.">
                     <svg class="cert-icon cert-adobe" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13.966 22.624l-1.69-4.281H8.122l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884L24 22.624Z"/>
                     </svg>
                     <span>Adobe</span>
                 </div>
-                <div class="cert-item">
+                <div class="cert-item" data-tooltip="Microsoft: Cloud, productivity & development badges" data-detail="Microsoft certifications validate skills across Azure cloud, productivity suites and developer tools with role-based paths.">
                     <i class="fab fa-microsoft"></i>
                     <span>Microsoft</span>
                 </div>
-                <div class="cert-item">
+                <div class="cert-item" data-tooltip="Meta: Front-end, UX & social platforms" data-detail="Meta programs emphasize front-end development, UX practices and building for large-scale social platforms.">
                     <i class="fab fa-meta"></i>
                     <span>Meta</span>
                 </div>
-                <div class="cert-item">
+                <div class="cert-item" data-tooltip="CISCO: Networking, security & infrastructure" data-detail="Cisco tracks include networking foundations, security, routing/switching and modern infrastructure operations.">
                     <i class="fas fa-network-wired"></i>
                     <span>CISCO</span>
                 </div>
-                <div class="cert-item">
+                <div class="cert-item" data-tooltip="Google: Analytics, cloud & automation" data-detail="Google credentials span analytics, cloud computing, automation and modern web performance best practices.">
                     <i class="fab fa-google"></i>
                     <span>Google</span>
                 </div>
@@ -405,6 +405,26 @@
         </div>
     </footer>
 
+    </div>
+
+    <!-- Certification Glassy Modal -->
+    <div id="certModal" class="cert-modal" aria-hidden="true">
+        <div class="cert-modal-content lightning-card" role="dialog" aria-modal="true">
+            <button class="cert-modal-close" aria-label="Close">&times;</button>
+            <div class="card-content">
+                <div class="row align-items-center">
+                    <div class="col-md-4 text-center mb-4 mb-md-0 border-end-md">
+                        <div class="brand-logo">
+                            <i id="certIcon" class="fab fa-ibm"></i>
+                            <span id="certBrand">IBM</span>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="cert-list" id="certListContainer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
@@ -559,6 +579,209 @@
             const opt = { margin: 10, filename: 'Waseem_Akram_CV.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' } };
             html2pdf().set(opt).from(element).save();
         }
+
+        // Certification data for each brand
+        const certData = {
+            'IBM': {
+                icon: 'fab fa-ibm',
+                certs: [
+                    { title: 'IBM UI UX Designer', institute: 'IBM Professional Certificate', date: 'Sep 2023' },
+                    { title: 'Design Thinking Practitioner', institute: 'IBM', date: 'Aug 2023' },
+                    { title: 'Enterprise Design Thinking', institute: 'IBM', date: 'July 2023' }
+                ]
+            },
+            'Adobe': {
+                icon: 'fab fa-adobe',
+                certs: [
+                    { title: 'Adobe Photoshop Specialist', institute: 'Adobe', date: 'Mar 2024' },
+                    { title: 'Adobe Illustrator Expert', institute: 'Adobe', date: 'Feb 2024' },
+                    { title: 'Adobe Creative Cloud Master', institute: 'Adobe', date: 'Jan 2024' }
+                ]
+            },
+            'Microsoft': {
+                icon: 'fab fa-microsoft',
+                certs: [
+                    { title: 'Microsoft Azure Fundamentals', institute: 'Microsoft', date: 'Dec 2023' },
+                    { title: 'Microsoft 365 Certified', institute: 'Microsoft', date: 'Nov 2023' }
+                ]
+            },
+            'Meta': {
+                icon: 'fab fa-meta',
+                certs: [
+                    { title: 'Meta Front-End Developer', institute: 'Meta', date: 'Oct 2023' },
+                    { title: 'Meta Social Media Marketing', institute: 'Meta', date: 'Sep 2023' }
+                ]
+            },
+            'CISCO': {
+                icon: 'fas fa-network-wired',
+                certs: [
+                    { title: 'CISCO CCNA Routing & Switching', institute: 'Cisco', date: 'Aug 2023' },
+                    { title: 'CISCO Security Essentials', institute: 'Cisco', date: 'Jul 2023' }
+                ]
+            },
+            'Google': {
+                icon: 'fab fa-google',
+                certs: [
+                    { title: 'Google Cloud Associate', institute: 'Google', date: 'Jun 2023' },
+                    { title: 'Google Data Analytics', institute: 'Google', date: 'May 2023' }
+                ]
+            }
+        };
+
+        // Skills data for detailed modal
+        const skillsData = {
+            'Web Development': {
+                icon: 'fas fa-code',
+                items: [
+                    { title: 'React', icon: 'fab fa-react', desc: 'Component-based UI libraries, Hooks, State Management' },
+                    { title: 'JavaScript ES6+', icon: 'fas fa-js-square', desc: 'Async/Await, Arrow Functions, Destructuring' },
+                    { title: 'PHP & MySQL', icon: 'fas fa-database', desc: 'Server-side scripting, Database Design, CRUD Operations' },
+                    { title: 'HTML5 & CSS3', icon: 'fas fa-code', desc: 'Semantic HTML, Flexbox, Grid, Animations' },
+                    { title: 'Bootstrap & Responsive', icon: 'fas fa-mobile-alt', desc: 'Mobile-first Design, Media Queries, Component Library' },
+                    { title: 'Node.js & Express', icon: 'fas fa-server', desc: 'API Development, Middleware, Authentication' },
+                    { title: 'WordPress Development', icon: 'fas fa-wordpress', desc: 'Theme Customization, Plugin Development, SEO' },
+                    { title: 'REST APIs', icon: 'fas fa-exchange-alt', desc: 'API Design, JSON, HTTP Methods, Integration' }
+                ]
+            },
+            'Graphic Design': {
+                icon: 'fas fa-paint-brush',
+                items: [
+                    { title: 'Adobe Photoshop', icon: 'fas fa-image', desc: 'Photo Editing, Layer Management, Effects & Filters' },
+                    { title: 'Adobe Illustrator', icon: 'fas fa-pen-fancy', desc: 'Vector Graphics, Logo Design, Typography' },
+                    { title: 'Figma', icon: 'fas fa-square', desc: 'UI/UX Design, Prototyping, Design Systems' },
+                    { title: 'Logo Design', icon: 'fas fa-gem', desc: 'Brand Identity, Icon Design, Visual Communication' },
+                    { title: 'Social Media Graphics', icon: 'fas fa-share-alt', desc: 'Banners, Posts, Stories, Thumbnails' },
+                    { title: 'Color Theory', icon: 'fas fa-palette', desc: 'Color Harmony, Psychology, Accessibility' },
+                    { title: 'Typography', icon: 'fas fa-heading', desc: 'Font Selection, Spacing, Hierarchy, Readability' },
+                    { title: 'Web Design UI/UX', icon: 'fas fa-laptop', desc: 'Wireframing, Prototyping, User Experience' },
+                    { title: 'InDesign Layout', icon: 'fas fa-file', desc: 'Print Design, Brochures, Posters, Publications' }
+                ]
+            },
+            'AI & Tech': {
+                icon: 'fas fa-brain',
+                items: [
+                    { title: 'Machine Learning', icon: 'fas fa-chart-line', desc: 'Supervised Learning, Classification, Regression' },
+                    { title: 'Deep Learning', icon: 'fas fa-cube', desc: 'Neural Networks, CNNs, RNNs, TensorFlow' },
+                    { title: 'Python Programming', icon: 'fas fa-code', desc: 'Data Analysis, Libraries: NumPy, Pandas, Scikit-learn' },
+                    { title: 'Data Analysis', icon: 'fas fa-chart-bar', desc: 'Data Visualization, Statistical Analysis, Insights' },
+                    { title: 'Excel Advanced', icon: 'fas fa-table', desc: 'Formulas, Pivot Tables, Data Modeling' },
+                    { title: 'Power BI', icon: 'fas fa-chart-pie', desc: 'Dashboard Creation, Data Visualization, BI Analytics' },
+                    { title: 'IoT Basics', icon: 'fas fa-sitemap', desc: 'Arduino, Sensors, Connected Devices' },
+                    { title: 'Cloud Computing', icon: 'fas fa-cloud', desc: 'AWS, Azure, Google Cloud Basics' },
+                    { title: 'Automation Scripts', icon: 'fas fa-cogs', desc: 'Task Automation, Scripting, Process Optimization' }
+                ]
+            },
+            'Mentoring': {
+                icon: 'fas fa-chalkboard-teacher',
+                items: [
+                    { title: 'Curriculum Development', icon: 'fas fa-book', desc: 'Course Design, Learning Objectives, Content Structure' },
+                    { title: 'Project-Based Learning', icon: 'fas fa-project-diagram', desc: 'Hands-on Projects, Real-world Applications, Case Studies' },
+                    { title: 'Interactive Teaching', icon: 'fas fa-comments', desc: 'Class Engagement, Q&A Sessions, Discussions' },
+                    { title: 'Student Assessment', icon: 'fas fa-clipboard-check', desc: 'Evaluation, Grading, Feedback, Progress Tracking' },
+                    { title: 'Workshop Facilitation', icon: 'fas fa-users', desc: 'Group Sessions, Seminars, Training Programs' },
+                    { title: 'Career Guidance', icon: 'fas fa-compass', desc: 'Career Path Planning, Skill Development, Mentorship' },
+                    { title: 'Online Teaching', icon: 'fas fa-video', desc: 'Virtual Classes, LMS Management, Video Tutorials' },
+                    { title: 'Soft Skills Training', icon: 'fas fa-handshake', desc: 'Communication, Leadership, Problem-solving, Teamwork' }
+                ]
+            }
+        };
+
+        // Unified modal handler for both certifications and skills
+        (function(){
+            const modal = document.getElementById('certModal');
+            const certIcon = document.getElementById('certIcon');
+            const certBrand = document.getElementById('certBrand');
+            const certListContainer = document.getElementById('certListContainer');
+            const closeBtn = modal.querySelector('.cert-modal-close');
+            let modalType = 'cert'; // track if modal is showing cert or skill
+
+            function renderCertList(certs) {
+                return certs.map(cert => `
+                    <div class="cert-item">
+                        <div class="cert-badge">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="cert-text">
+                            <h5>${cert.title}</h5>
+                            <p><strong>Institute:</strong> ${cert.institute}</p>
+                            <p class="date">Issued: ${cert.date}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            function renderSkillList(items) {
+                return items.map(item => `
+                    <div class="cert-item">
+                        <div class="cert-badge">
+                            <i class="${item.icon}"></i>
+                        </div>
+                        <div class="cert-text">
+                            <h5>${item.title}</h5>
+                            <p>${item.desc}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            function openCertModal(name) {
+                const data = certData[name];
+                if(!data) return;
+                
+                modalType = 'cert';
+                modal.classList.remove('skill-mode');
+                certIcon.className = data.icon;
+                certBrand.textContent = name;
+                certListContainer.innerHTML = renderCertList(data.certs);
+                
+                modal.classList.add('show');
+                modal.setAttribute('aria-hidden','false');
+            }
+
+            function openSkillModal(name) {
+                const data = skillsData[name];
+                if(!data) return;
+                
+                modalType = 'skill';
+                modal.classList.add('skill-mode');
+                certIcon.className = data.icon;
+                certBrand.textContent = name;
+                certListContainer.innerHTML = renderSkillList(data.items);
+                
+                modal.classList.add('show');
+                modal.setAttribute('aria-hidden','false');
+            }
+
+            function closeModal(){
+                modal.classList.remove('show');
+                modal.setAttribute('aria-hidden','true');
+            }
+
+            // Certification click handlers
+            document.querySelectorAll('.cert-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const name = (item.querySelector('span')?.textContent || 'Certification').trim();
+                    openCertModal(name);
+                });
+            });
+
+            // Skill card click handlers
+            document.querySelectorAll('.skill-card').forEach(card => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', () => {
+                    const name = card.getAttribute('data-skill');
+                    if(name) openSkillModal(name);
+                });
+            });
+
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if(e.target === modal) closeModal();
+            });
+            window.addEventListener('keydown', (e) => {
+                if(e.key === 'Escape') closeModal();
+            });
+        })();
     </script>
 </body>
 </html>
