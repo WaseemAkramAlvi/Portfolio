@@ -488,6 +488,14 @@
             transition: all 0.3s ease;
         }
 
+        /* SVG Icon Styling */
+        .cert-item .cert-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            color: #8a2be2;
+            transition: all 0.3s ease;
+        }
+
         .cert-item span {
             font-weight: 700;
             font-size: 1.1rem;
@@ -503,6 +511,37 @@
         .cert-item:hover i {
             color: #da70d6;
             transform: scale(1.15);
+        }
+
+        .cert-item:hover .cert-icon {
+            color: #da70d6;
+            transform: scale(1.15);
+        }
+
+        /* Specific adjustments for IBM and Adobe icons */
+        .cert-ibm {
+            font-weight: bold;
+            /* width: 4rem !important;
+            height: 4rem !important; */
+            filter: brightness(0) saturate(100%) invert(24%) sepia(73%) saturate(3087%) hue-rotate(262deg) brightness(87%) contrast(94%);
+            transform: scale(1.2);
+            background: transparent !important;
+            border-radius: 0 !important;
+            padding: 0 !important;
+        }
+
+        .cert-adobe {
+            font-weight: bold;
+        }
+
+       
+        .cert-item:hover .cert-adobe {
+            filter: brightness(0) saturate(100%) invert(66%) sepia(18%) saturate(1751%) hue-rotate(247deg) brightness(98%) contrast(89%);
+            transform: scale(1.2) ;
+        }
+        
+        .cert-item:hover .cert-adobe {
+            color: #da70d6;
         }
 
         /* Gradient fade on edges */
