@@ -66,6 +66,11 @@
                     <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item ms-3">
+                        <a href="#contact-me" class="btn-contact-nav">
+                            <i class="fas fa-envelope"></i> Contact Me
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
                         <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
                     </li>
                 </ul>
@@ -225,48 +230,58 @@
     <section id="certifications">
         <div class="container">
             <h2 class="section-title">Certifications</h2>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="cert-card text-center">
-                        <div class="cert-icon"><i class="fab fa-ibm"></i></div>
-                        <h5>IBM UI UX Designer</h5>
-                        <p class="text-muted small">Wireframing, Prototyping (Figma), UX Research</p>
-                    </div>
+        </div>
+        <div class="cert-ticker-section">
+            <div class="cert-track">
+                <div class="cert-item">
+                    <i class="fab fa-ibm"></i>
+                    <span>IBM</span>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="cert-card text-center">
-                        <div class="cert-icon"><i class="fab fa-adobe"></i></div>
-                        <h5>Adobe Graphic Designer</h5>
-                        <p class="text-muted small">Design Fundamentals, Gen AI Content, Image Editing</p>
-                    </div>
+                <div class="cert-item">
+                    <i class="fab fa-adobe"></i>
+                    <span>Adobe</span>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="cert-card text-center">
-                        <div class="cert-icon"><i class="fab fa-microsoft"></i></div>
-                        <h5>Microsoft Azure AI</h5>
-                        <p class="text-muted small">AI Fundamentals, Machine Learning, NLP</p>
-                    </div>
+                <div class="cert-item">
+                    <i class="fab fa-microsoft"></i>
+                    <span>Microsoft</span>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="cert-card text-center">
-                        <div class="cert-icon"><i class="fab fa-meta"></i></div>
-                        <h5>Meta Front-End Dev</h5>
-                        <p class="text-muted small">Introduction to Front-End Development & HTML/CSS in Depth</p>
-                    </div>
+                <div class="cert-item">
+                    <i class="fab fa-meta"></i>
+                    <span>Meta</span>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="cert-card text-center">
-                        <div class="cert-icon"><i class="fas fa-network-wired"></i></div>
-                        <h5>CISCO Network Essentials</h5>
-                        <p class="text-muted small">Networking concepts, IP addressing, Switching</p>
-                    </div>
+                <div class="cert-item">
+                    <i class="fas fa-network-wired"></i>
+                    <span>CISCO</span>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="cert-card text-center">
-                        <div class="cert-icon"><i class="fas fa-file-word"></i></div>
-                        <h5>Microsoft Office Specialist</h5>
-                        <p class="text-muted small">MOS 2013 Certified (Word, Excel, PowerPoint)</p>
-                    </div>
+                <div class="cert-item">
+                    <i class="fab fa-google"></i>
+                    <span>Google</span>
+                </div>
+                
+                <!-- Duplicate for seamless loop -->
+                <div class="cert-item">
+                    <i class="fab fa-ibm"></i>
+                    <span>IBM</span>
+                </div>
+                <div class="cert-item">
+                    <i class="fab fa-adobe"></i>
+                    <span>Adobe</span>
+                </div>
+                <div class="cert-item">
+                    <i class="fab fa-microsoft"></i>
+                    <span>Microsoft</span>
+                </div>
+                <div class="cert-item">
+                    <i class="fab fa-meta"></i>
+                    <span>Meta</span>
+                </div>
+                <div class="cert-item">
+                    <i class="fas fa-network-wired"></i>
+                    <span>CISCO</span>
+                </div>
+                <div class="cert-item">
+                    <i class="fab fa-google"></i>
+                    <span>Google</span>
                 </div>
             </div>
         </div>
@@ -345,10 +360,10 @@
                                 <div class="social-links mt-4">
                                     <h6>Follow Me</h6>
                                     <div class="social-icons-group">
-                                        <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                                        <a href="#" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                                        <a href="https://www.linkedin.com/in/waseemakramalvi/" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                        <a href="https://github.com/WaseemAkramAlvi" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
                                         <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
-                                        <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                        <a href="" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a> <a href="https://www.linkedin.com/in/waseemakramalvi/"> class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -474,11 +489,22 @@
         const scrollToTopBtn = document.getElementById('scrollToTop');
         
         // Show/hide scroll to top button based on scroll position
+        // Enhanced sticky navbar behavior
+        const navbar = document.querySelector('.navbar');
+        
         window.addEventListener('scroll', () => {
+            // Scroll to top button
             if (window.pageYOffset > 300) {
                 scrollToTopBtn.classList.add('show');
             } else {
                 scrollToTopBtn.classList.remove('show');
+            }
+            
+            // Sticky navbar enhancement
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
         });
         
