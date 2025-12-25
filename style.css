@@ -19,12 +19,26 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            padding: 8px 0;
         }
 
         .navbar-brand {
             font-size: 1.5rem;
             font-weight: bold;
             color: #1a1a1a !important;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled .navbar-brand {
+            font-size: 1.3rem;
         }
 
         .nav-link {
@@ -48,6 +62,32 @@
 
         .nav-link:hover::after {
             width: 80%;
+        }
+
+        /* Contact Me Button in Navbar */
+        .btn-contact-nav {
+            background: linear-gradient(45deg, #8a2be2, #da70d6);
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+        }
+
+        .btn-contact-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(138, 43, 226, 0.5);
+            color: #fff;
+        }
+
+        .btn-contact-nav i {
+            font-size: 1rem;
         }
 
         /* --- HERO SECTION --- */
@@ -409,6 +449,104 @@
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+        }
+
+        /* Certifications Ticker Section */
+        .cert-ticker-section {
+            width: 100%;
+            background: rgba(138, 43, 226, 0.05);
+            padding: 40px 0;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            border-top: 1px solid rgba(138, 43, 226, 0.1);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.1);
+        }
+
+        .cert-track {
+            display: flex;
+            width: fit-content;
+            animation: scrollCert 30s linear infinite;
+            gap: 0;
+        }
+
+        .cert-item {
+            padding: 20px 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item i {
+            font-size: 3.5rem;
+            color: #8a2be2;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item span {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cert-item:hover {
+            transform: scale(1.1);
+        }
+
+        .cert-item:hover i {
+            color: #da70d6;
+            transform: scale(1.15);
+        }
+
+        /* Gradient fade on edges */
+        .cert-ticker-section::before,
+        .cert-ticker-section::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .cert-ticker-section::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(138, 43, 226, 0.05), transparent);
+        }
+
+        .cert-ticker-section::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(138, 43, 226, 0.05), transparent);
+        }
+
+        @keyframes scrollCert {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0%); }
+        }
+
+        /* Dark Mode Support */
+        body.dark-mode .cert-ticker-section {
+            background: rgba(138, 43, 226, 0.1);
+        }
+
+        body.dark-mode .cert-item span {
+            color: #fff;
+        }
+
+        body.dark-mode .cert-ticker-section::before {
+            background: linear-gradient(to right, rgba(26, 26, 46, 1), transparent);
+        }
+
+        body.dark-mode .cert-ticker-section::after {
+            background: linear-gradient(to left, rgba(22, 33, 62, 1), transparent);
         }
 
         /* --- SECTIONS (ABOUT, SKILLS, ETC) --- */
